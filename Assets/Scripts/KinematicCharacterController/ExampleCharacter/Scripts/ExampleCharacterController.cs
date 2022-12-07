@@ -412,6 +412,8 @@ namespace KinematicCharacterController.Examples
                                 _jumpRequested = false;
                                 _jumpConsumed = true;
                                 _jumpedThisFrame = true;
+                                
+                                animator.SetBool("Grounded", false);
                             }
                         }
 
@@ -498,7 +500,6 @@ namespace KinematicCharacterController.Examples
             else if (!Motor.GroundingStatus.IsStableOnGround && Motor.LastGroundingStatus.IsStableOnGround)
             {
                 OnLeaveStableGround();
-                animator.SetTrigger("Jump");
                 animator.SetBool("Grounded", false);
             }
         }
