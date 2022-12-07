@@ -17,6 +17,7 @@ public class NPCStateManager : MonoBehaviour
     
     void Start()
     {
+        currentState = saunter;
         currentState.EnterState(this);
     }
 
