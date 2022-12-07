@@ -18,10 +18,8 @@ public class BallThrower : MonoBehaviour
 
     public void ThrowRelease()
     {
-        Debug.Log("Hello");
         if (instantiatedPokeball != null)
         {
-            Debug.Log("Hello");
             instantiatedPokeball.transform.parent = null;
             instantiatedPokeball.GetComponent<SphereCollider>().enabled = true;
             instantiatedPokeball.GetComponent<Rigidbody>().useGravity = true;
@@ -47,6 +45,11 @@ public class BallThrower : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if (instantiatedPokeball != null)
+            {
+                Destroy(instantiatedPokeball);
+                instantiatedPokeball = null;
+            }
             throwing = true;
             instantiatedPokeball = Instantiate(pokeball, ballholder, false);
             instantiatedPokeball.transform.position = ballholder.position;
