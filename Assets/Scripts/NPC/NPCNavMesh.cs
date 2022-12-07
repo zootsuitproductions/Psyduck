@@ -8,6 +8,8 @@ public class NPCNavMesh : MonoBehaviour
     public Transform player;
     private NavMeshAgent _navMeshAgent;
 
+    public Transform worldCorner1;
+    public Transform worldCorner2;
     private enum State
     {
         Chill, Saunter, Flee, Dig
@@ -21,6 +23,7 @@ public class NPCNavMesh : MonoBehaviour
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        
     }
     
     // void Start()
@@ -38,6 +41,7 @@ public class NPCNavMesh : MonoBehaviour
           case  State.Chill:
               break;
           case State.Saunter:
+              
               break;
           case State.Flee:
               break;
@@ -45,4 +49,10 @@ public class NPCNavMesh : MonoBehaviour
               break;
         }
     }
+
+    void reachedDestination()
+    {
+        
+    }
 }
+
