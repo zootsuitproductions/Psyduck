@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class DigState : NPCAbstractState
 {
     private float startTime;
-    private float waitTimeBeforeSinking = 1f;
+    private float waitTimeBeforeSinking = 0f;
     public override void EnterState(NPCStateManager manager)
     {
         startTime = Time.time;

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
 {
     public GameObject fox;
 
-    public static int numCreatures;
+    public static int numCreatures = 0;
 
     public static int numCreaturesRemaining;
 
@@ -21,10 +22,17 @@ public class GameLogic : MonoBehaviour
 
     public TMP_Text timer;
     public TMP_Text updateText;
-    
+
+    public TMP_Text capturedText;
+
+    public Canvas endScreen;
+    private bool gameOver;
+
     // Start is called before the first frame update
     void Start()
     {
+        // capturedText.enabled = false;
+        endScreen.enabled = false;
         
         updateText.enabled = false;
         numCaught = 0;
@@ -66,11 +74,28 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        timer.text = ((int) time).ToString();
-        if (numCreaturesRemaining <= 0)
+        if (!gameOver)
         {
-            SceneManager.LoadScene(2);
+            time += Time.deltaTime;
+            timer.text = ((int)time).ToString();
+            if (numCreaturesRemaining <= 0)
+            {
+                endScreen.enabled = true;
+                updateText.enabled = false;
+                timer.enabled = false;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+
+
+                capturedText.text = "You caught " + GameLogic.numCaught.ToString() + "/" +
+                                    GameLogic.numCreatures.ToString() +
+                                    " creatures in " + GameLogic.time.ToString() + " seconds!";
+                gameOver = true;
+
+                Time.timeScale = 0f;
+                // SceneManager.LoadScene(2);
+            }
         }
     }
+
 }

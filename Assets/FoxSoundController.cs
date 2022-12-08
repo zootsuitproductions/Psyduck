@@ -28,6 +28,12 @@ public class FoxSoundController : MonoBehaviour
         
         Invoke("playSound", Random.Range(10f, 30f));
     }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
+    }
+
     // Update is called once per frame
     void Update()
     {

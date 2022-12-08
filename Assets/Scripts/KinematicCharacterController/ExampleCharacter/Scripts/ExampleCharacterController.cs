@@ -102,7 +102,7 @@ namespace KinematicCharacterController.Examples
         private float timeOfLastThrow = -100f;
         private void Awake()
         {
-            Cursor.visible = false;
+            // Cursor.visible = false;
             // Handle initial state
             TransitionToState(CharacterState.Default);
 
