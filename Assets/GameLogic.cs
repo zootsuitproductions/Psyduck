@@ -9,16 +9,14 @@ public class GameLogic : MonoBehaviour
 {
     public GameObject fox;
 
-    public static int numCreatures = 0;
-
+    public static int numCreatures;
     public static int numCreaturesRemaining;
-
     public static int numCaught;
+    public static float time;
 
     public Transform corner1;
     public Transform corner2;
 
-    public static float time;
 
     public TMP_Text timer;
     public TMP_Text updateText;
@@ -31,6 +29,9 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        numCreatures = 3;
+        time = 0f;
+        Time.timeScale = 1f;
         // capturedText.enabled = false;
         endScreen.enabled = false;
         
@@ -93,7 +94,7 @@ public class GameLogic : MonoBehaviour
                 gameOver = true;
 
                 Time.timeScale = 0f;
-                // SceneManager.LoadScene(2);
+                SceneManager.LoadScene(2);
             }
         }
     }
