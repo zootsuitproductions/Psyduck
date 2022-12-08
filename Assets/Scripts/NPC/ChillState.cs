@@ -17,7 +17,7 @@ public class ChillState : NPCAbstractState
     {
         if (manager.inView(manager.player))
         {
-            manager.SwitchToState(manager.dig);
+            manager.SwitchToState(manager.flee);
         }
     }
 }
