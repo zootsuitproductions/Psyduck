@@ -6,12 +6,16 @@ public class ChillState : NPCAbstractState
 {
     public override void EnterState(NPCStateManager manager)
     {
+        manager.animator.SetBool("Moving", false);
         manager._navMeshAgent.destination = manager.transform.position;
-        manager.SwitchStateAfterTime(manager.saunter, Random.Range(5f, 15f));  
+        manager.SwitchStateAfterTime(manager.saunter, Random.Range(5f, 7f));
     }
 
     public override void UpdateState(NPCStateManager manager)
     {
-        // throw new System.NotImplementedException();
+        if (manager.inView(manager.player))
+        {
+            manager.SwitchToState(manager.flee);
+        }
     }
 }

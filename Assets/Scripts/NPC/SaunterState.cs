@@ -1,25 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class SaunterState : NPCAbstractState
 {
     private Vector3 lastPosition;
+
+    private IEnumerator timedSwitch;
    public override void EnterState(NPCStateManager manager)
    {
-       
+       manager._navMeshAgent.speed = manager.walkSpeed;
        manager._navMeshAgent.destination = findDestination(manager.worldCorner1.position, manager.worldCorner2.position);
-       manager.SwitchStateAfterTime(manager.chill, Random.Range(5f, 10f));
        manager.animator.SetBool("Moving", true);
+       manager.SwitchStateAfterTime(manager.chill, Random.Range(5f, 10f));
+       
    }
    
    public override void UpdateState(NPCStateManager manager)
    {
+       if (manager.inView(manager.player))
+       {
+           
+           manager.SwitchToState(manager.flee);
+           return;
+       }
        bool reachedDestination = manager.transform.position == manager._navMeshAgent.destination;
        if (reachedDestination)
        {
-           manager.animator.SetBool("Moving", false);
+           manager.SwitchToState(manager.chill);
        }
    }
 

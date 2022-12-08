@@ -13,9 +13,18 @@ public class NPCStateManager : MonoBehaviour
     public Transform worldCorner1;
     public Transform worldCorner2;
 
+    public float viewingAngle;
+    public float viewingDistance;
+    public float walkSpeed = 1f;
+    public float sprintSpeed = 5f;
+
     NPCAbstractState currentState;
+    
     public ChillState chill = new ChillState();
     public SaunterState saunter = new SaunterState();
+    public FleeState flee = new FleeState();
+
+    private IEnumerator queuedStateCoroutine;
     
     void Start()
     {
@@ -28,16 +37,40 @@ public class NPCStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void SwitchStateAfterTime( NPCAbstractState state, float time)
+    public void SwitchStateAfterTime( NPCAbstractState newState, float time)
     {
-        StartCoroutine(SwitchState(state, time));
+        queuedStateCoroutine = SwitchStateCoroutine(newState, time);
+        StartCoroutine(queuedStateCoroutine);
     }
-
-    IEnumerator SwitchState(NPCAbstractState state, float time)
+    
+    public void SwitchToState(NPCAbstractState state)
     {
-        yield return new WaitForSeconds(time);
-        animator.SetBool("Moving", false);
+        if (queuedStateCoroutine != null)
+        {
+            StopCoroutine(queuedStateCoroutine);
+        }
         currentState = state;
         state.EnterState(this);
+    }
+
+    private IEnumerator SwitchStateCoroutine(NPCAbstractState state, float time)
+    {
+        yield return new WaitForSeconds(time);
+        SwitchToState(state);
+    }
+
+    public bool inView(Transform target)
+    {
+        float dotproduct = Vector3.Dot(transform.forward,
+            Vector3.Normalize(target.position - transform.position));
+        float view = 1.0f - viewingAngle;
+        float distance = (transform.position - target.position).magnitude;
+        return (dotproduct >= view && distance <= viewingDistance);
+    }
+
+    public void moveToLocation(Vector3 location)
+    {
+        _navMeshAgent.destination = location;
+        animator.SetBool("Moving", true);
     }
 }
