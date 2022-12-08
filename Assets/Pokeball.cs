@@ -36,7 +36,13 @@ public class Pokeball : MonoBehaviour
 
     private void goToPhase4()
     {
+        rigid.isKinematic = false;
         animationPhase = 4;
+    }
+    private void goToPhase5()
+    {
+        animationPhase = 5;
+        rigid.isKinematic = true;
     }
 
     // Update is called once per frame
@@ -67,9 +73,13 @@ public class Pokeball : MonoBehaviour
                     Invoke("goToPhase4", 0.5f);
                     break;
                 case 4:
-                    rigid.isKinematic = false;
+                    Invoke("goToPhase5", 1f);
                     break;
+                case 5:
                     
+                    break;
+
+
             }
             
         }
