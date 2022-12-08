@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Menu.unity
+    guid: 92feaae5f412e4be29cce207744048ee
+  - enabled: 1
+    path: Assets/Scenes/Psyduck.unity
+    guid: b1df49d99ecd84a73a892148e0297170
+  - enabled: 1
+    path: Assets/end.unity
+    guid: 82a93ae9ee37c084a94a044104113847
   m_configObjects: {}

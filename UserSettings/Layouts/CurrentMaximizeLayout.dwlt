@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 14417
+  controlID: 19737
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 14418
+  controlID: 19738
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 14395
+  controlID: 19739
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: ba95ffffb2ceffff0cdafffff2dcffff40ddffffd0e1ffff32fbffff34fbffff9c610000768a00003e98000048980000a89d0000b29d0000409e0000
+      m_ExpandedIDs: 94cafeffd4cafeff8cccfeff18cefeff66cefeff1ed0fefff6d7feff44d8feff4cd8feff06d9feff54d9feff0cdbfeffba95ffffb2ceffff0cdafffff2dcffff40ddffffd0e1ffff34fbffff9c610000768a00003e98000048980000a89d0000b29d0000409e00004cb90100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -589,9 +589,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 330.29718
+    m_Target: 315.4338
     speed: 2
-    m_Value: 330.29718
+    m_Value: 315.4338
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -833,8 +833,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 04a80100
-    m_LastClickedInstanceID: 108548
+    m_SelectedInstanceIDs: ba95ffff
+    m_LastClickedInstanceID: -27206
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300000a6100007261000020610000a26100008c61000068610000
     m_RenameOverlay:
@@ -952,8 +952,8 @@ MonoBehaviour:
     m_CachedPref: -211
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 108548
-  m_LastVerticalScrollValue: 1403.2001
+  m_LastInspectedObjectInstanceID: -1
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

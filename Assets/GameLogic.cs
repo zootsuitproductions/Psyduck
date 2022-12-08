@@ -87,10 +87,18 @@ public class GameLogic : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
 
+                if (numCaught == numCreatures)
+                {
+                    float previousHighScore = PlayerPrefs.GetFloat("highscore", -1);
+                    if (previousHighScore < 0 || time < previousHighScore)
+                    {
+                        PlayerPrefs.SetFloat("highscore", time);
+                    }
+                }
 
-                capturedText.text = "You caught " + GameLogic.numCaught.ToString() + "/" +
-                                    GameLogic.numCreatures.ToString() +
-                                    " creatures in " + GameLogic.time.ToString() + " seconds!";
+                // capturedText.text = "You caught " + GameLogic.numCaught.ToString() + "/" +
+                //                     GameLogic.numCreatures.ToString() +
+                //                     " creatures in " + GameLogic.time.ToString() + " seconds!";
                 gameOver = true;
 
                 Time.timeScale = 0f;
