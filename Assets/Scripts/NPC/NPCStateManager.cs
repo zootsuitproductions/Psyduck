@@ -11,7 +11,6 @@ public class NPCStateManager : MonoBehaviour
     public NavMeshAgent _navMeshAgent;
     public Animator animator;
     
-
     public Transform worldCorner1;
     public Transform worldCorner2;
 
@@ -48,17 +47,18 @@ public class NPCStateManager : MonoBehaviour
 
     public void DestroyAfter1Sec()
     {
+        GameLogic.numCreaturesRemaining -= 1;
         Invoke("destroyObject",1f);
     }
 
-    public void OnDisable()
-    {
-        if (queuedStateCoroutine != null)
-        {
-            StopCoroutine(queuedStateCoroutine);
-        }
-        SwitchToState(flee);
-    }
+    // public void OnDisable()
+    // {
+    //     if (queuedStateCoroutine != null)
+    //     {
+    //         StopCoroutine(queuedStateCoroutine);
+    //     }
+    //     SwitchToState(flee);
+    // }
 
     private void destroyObject()
     {

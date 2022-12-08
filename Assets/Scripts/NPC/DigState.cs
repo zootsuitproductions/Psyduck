@@ -22,6 +22,7 @@ public class DigState : NPCAbstractState
         
         if (Time.time - startTime >= waitTimeBeforeSinking)
         {
+            
             manager._navMeshAgent.enabled = false;
             manager.transform.Translate(Vector3.down * Time.deltaTime);
         }

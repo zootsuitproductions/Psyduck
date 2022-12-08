@@ -10,6 +10,8 @@ public class BallThrower : MonoBehaviour
     public Animator animator;
     public Transform camera;
 
+    public AudioSource source;
+    public AudioClip throwSound;
     public float throwStrength;
     
     private GameObject instantiatedPokeball;
@@ -20,6 +22,8 @@ public class BallThrower : MonoBehaviour
     {
         if (instantiatedPokeball != null)
         {
+            source.clip = throwSound;
+            source.Play();
             instantiatedPokeball.transform.parent = null;
             instantiatedPokeball.GetComponent<SphereCollider>().enabled = true;
             instantiatedPokeball.GetComponent<Rigidbody>().useGravity = true;
