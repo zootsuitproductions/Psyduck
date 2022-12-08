@@ -11,9 +11,11 @@ public class SaunterState : NPCAbstractState
     private IEnumerator timedSwitch;
    public override void EnterState(NPCStateManager manager)
    {
+       
+       manager.animator.SetBool("Sprinting", false);
+       manager.animator.SetBool("Moving", true);
        manager._navMeshAgent.speed = manager.walkSpeed;
        manager._navMeshAgent.destination = findDestination(manager.worldCorner1.position, manager.worldCorner2.position);
-       manager.animator.SetBool("Moving", true);
        manager.SwitchStateAfterTime(manager.chill, Random.Range(5f, 10f));
        
    }
@@ -39,6 +41,5 @@ public class SaunterState : NPCAbstractState
       float z = Random.Range(p1.z, p2.z);
 
       return new Vector3(x, Terrain.activeTerrain.SampleHeight(new Vector3(x, 0f, z)), z);
-        
    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class NPCStateManager : MonoBehaviour
     public Transform player;
     public NavMeshAgent _navMeshAgent;
     public Animator animator;
+    
 
     public Transform worldCorner1;
     public Transform worldCorner2;
@@ -23,6 +25,7 @@ public class NPCStateManager : MonoBehaviour
     public ChillState chill = new ChillState();
     public SaunterState saunter = new SaunterState();
     public FleeState flee = new FleeState();
+    public DigState dig = new DigState();
 
     private IEnumerator queuedStateCoroutine;
     
@@ -42,7 +45,25 @@ public class NPCStateManager : MonoBehaviour
         queuedStateCoroutine = SwitchStateCoroutine(newState, time);
         StartCoroutine(queuedStateCoroutine);
     }
-    
+
+    public void DestroyAfter1Sec()
+    {
+        Invoke("destroyObject",1f);
+    }
+
+    public void OnDisable()
+    {
+        if (queuedStateCoroutine != null)
+        {
+            StopCoroutine(queuedStateCoroutine);
+        }
+        SwitchToState(flee);
+    }
+
+    private void destroyObject()
+    {
+        Destroy(gameObject);
+    }
     public void SwitchToState(NPCAbstractState state)
     {
         if (queuedStateCoroutine != null)
